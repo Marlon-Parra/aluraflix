@@ -1,16 +1,16 @@
 import express from 'express';
 import fs from 'fs/promises';
-import cors from 'cors'; // Importa cors
+import cors from 'cors';
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000; // Utiliza el puerto proporcionado por Vercel o 5000 por defecto
 
 app.use(express.json());
-app.use(cors()); // Usa el middleware cors
+app.use(cors());
 
-let videos;
+let videos = [];
 
-// Carga el archivo JSON utilizando fs/promises
+// Cargar el archivo JSON usando fs/promises
 fs.readFile('./dbs.json', 'utf8')
   .then(data => {
     videos = JSON.parse(data);
@@ -42,13 +42,13 @@ fs.readFile('./dbs.json', 'utf8')
     app.put('/api/videos/:id', (req, res) => {
       const videoId = parseInt(req.params.id, 10);
       const updatedVideo = { ...req.body, id: videoId };
-      videos = videos.map(video => video.id === videoId ? updatedVideo : video);
+      videos = videos.map(video => (video.id === videoId ? updatedVideo : video));
       fs.writeFile('./dbs.json', JSON.stringify(videos, null, 2))
         .then(() => res.json(updatedVideo))
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
     });
 
-    // Inicia el servidor
+    // Iniciar el servidor
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
