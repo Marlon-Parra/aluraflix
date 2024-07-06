@@ -1,27 +1,25 @@
 import express from 'express';
 import fs from 'fs/promises';
-import cors from 'cors'; // Importa cors
+import cors from 'cors';
 
 const app = express();
-const port = process.env.PORT || 5000;
-
+const port = process.env.PORT || 5000; // Puerto predeterminado o desde las variables de entorno
 
 app.use(express.json());
-app.use(cors()); // Usa el middleware cors
+app.use(cors());
 
-let videos;
+let videos = [];
 
-// Carga el archivo JSON utilizando fs/promises
+// Cargar el archivo JSON usando fs/promises
 fs.readFile('./dbs.json', 'utf8')
   .then(data => {
     videos = JSON.parse(data);
 
-    // Ruta para obtener todos los videos
+    // Rutas para manejar videos
     app.get('/api/videos', (req, res) => {
       res.json(videos);
     });
 
-    // Ruta para agregar un nuevo video
     app.post('/api/videos', (req, res) => {
       const newVideo = { ...req.body, id: Date.now() };
       videos.push(newVideo);
@@ -30,7 +28,6 @@ fs.readFile('./dbs.json', 'utf8')
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
     });
 
-    // Ruta para eliminar un video
     app.delete('/api/videos/:id', (req, res) => {
       const videoId = parseInt(req.params.id, 10);
       videos = videos.filter(video => video.id !== videoId);
@@ -39,11 +36,10 @@ fs.readFile('./dbs.json', 'utf8')
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
     });
 
-    // Ruta para actualizar un video
     app.put('/api/videos/:id', (req, res) => {
       const videoId = parseInt(req.params.id, 10);
       const updatedVideo = { ...req.body, id: videoId };
-      videos = videos.map(video => video.id === videoId ? updatedVideo : video);
+      videos = videos.map(video => (video.id === videoId ? updatedVideo : video));
       fs.writeFile('./dbs.json', JSON.stringify(videos, null, 2))
         .then(() => res.json(updatedVideo))
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
