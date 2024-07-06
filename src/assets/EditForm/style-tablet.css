@@ -1,0 +1,110 @@
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* styles.css */
+    .edit-form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para modal */
+      z-index: 1000; /* Asegúrate de que el contenedor esté en el frente */
+    }
+    
+    .edit-form {
+      background-color:#171c27; /* Azul oscuro */
+      border: 2px solid #add8e6; /* Bordes azul clarito */
+      padding: 20px;
+      border-radius: 10px;
+      width: calc(100% - 168px); /* 84px de padding a cada lado */
+      max-width: 600px; /* Ancho máximo del formulario */
+    }
+    
+    .edit-form h2 {
+      color: #add8e6;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      color: #add8e6;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .form-group select{
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #1827af;
+      border-radius: 5px;
+      background-color: #171c27;
+      color: #ffffff
+    }
+    
+    
+    .form-group input,
+    .form-group textarea {
+      width: 96%;
+      padding: 10px;
+      border: 1px solid #1827af;
+      border-radius: 5px;
+      background-color: #171c27;
+      color: #ffffff
+    }
+    
+    .description-input {
+      height: 100px; /* Ajusta la altura del textarea */
+      resize: none; /* Desactiva el redimensionamiento */
+    }
+    
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .clear-btn,
+    .submit-btn {
+      background: linear-gradient(to right, #03122f, #000000); /* Gradiente de azul oscuro a negro */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    
+    .clear-btn:hover,
+    .submit-btn:hover {
+      background: linear-gradient(to right, #000000, #03122f); /* Gradiente de negro a azul oscuro */
+      color: white; /* Cambiamos el color del texto al pasar el mouse */
+    }
+    .close-btn {
+      background: linear-gradient(to right, #999999, #333333); /* Gradiente de gris claro a negro */
+      color: white;
+      border: none;
+      font-size: 20px;
+      padding: 8px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+    
+    .close-btn:hover {
+      background: linear-gradient(to right, #333333, #999999); /* Gradiente de negro a gris claro */
+      color: white; /* Cambiamos el color del texto al pasar el mouse a blanco */
+    }
+    
+    }
+    
+    

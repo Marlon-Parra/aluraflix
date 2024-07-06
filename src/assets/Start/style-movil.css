@@ -1,0 +1,9 @@
+/* style.css */
+
+@media (max-width: 767px) {
+
+    .imagen, .texto-container, .front-container, .Span, .parrafo, .Player-image {
+        display: none; /* Oculta todos los elementos dentro del media query en dispositivos móviles */
+    }
+
+}

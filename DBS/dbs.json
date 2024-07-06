@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Ruta para aprender Front end",
+    "description": "canal del creador HolaMundo",
+    "src": "https://i.ytimg.com/vi/q0UgClC8md4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBcN7SftgRIEUKaI47yWao8G01UcQ",
+    "videoUrl": "https://www.youtube.com/embed/q0UgClC8md4",
+    "categoria": "Front End",
+    "id": 1720285504115
+  },
+  {
+    "title": "consejos para desarrollador front end",
+    "description": "canal del creador midulive",
+    "src": "https://i.ytimg.com/vi/n189TdfbQIA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC7feY9xpqQwSTBPyFV517Q26nTfQ",
+    "videoUrl": "https://www.youtube.com/embed/n189TdfbQIA",
+    "categoria": "Front End",
+    "id": 1720285618031
+  },
+  {
+    "title": "Explorando el Back end ",
+    "description": "alura latam back end",
+    "src": "https://i.ytimg.com/vi/Z024LSCMqFk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB3xjx2-sGxZ00NSrSkEswD_8mPSA",
+    "videoUrl": "https://www.youtube.com/embed/Z024LSCMqFk",
+    "categoria": "Back End",
+    "id": 1720285956115
+  },
+  {
+    "title": "Ruta para el back end",
+    "description": "canal del creador HolaMundo",
+    "src": "https://i.ytimg.com/vi/0Zb5fgO0ubE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBihTy9rQwkqKtVNiGWtfeEOvBLjQ",
+    "videoUrl": "https://www.youtube.com/embed/0Zb5fgO0ubE",
+    "categoria": "Back End",
+    "id": 1720286045202
+  },
+  {
+    "title": "De 0 a programador back end",
+    "description": "canal del creador Mati Dev",
+    "src": "https://i.ytimg.com/vi/RYvFfsUyOtk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCCts1UX0T0UGmIeuFvhT7wDgq0Qg",
+    "videoUrl": "https://www.youtube.com/embed/RYvFfsUyOtk",
+    "categoria": "Back End",
+    "id": 1720286155704
+  },
+  {
+    "title": "¿Que son las Soft skills?",
+    "description": "canal alura latam ",
+    "src": "https://i.ytimg.com/vi/vhwspfvI52k/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxc_0rcRKCUTqYZXq2YUcjczMJNg",
+    "videoUrl": "https://www.youtube.com/embed/vhwspfvI52k",
+    "categoria": "Innovación y Gestión",
+    "id": 1720286408151
+  },
+  {
+    "title": "las 7 Soft skills deseadas",
+    "description": "canal alura latam",
+    "src": "https://i.ytimg.com/vi/YhR7Zp8NUzE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApSY-UYiv7541vDw1U-p_iqiq-VA",
+    "videoUrl": "https://www.youtube.com/embed/YhR7Zp8NUzE",
+    "categoria": "Innovación y Gestión",
+    "id": 1720286495699
+  },
+  {
+    "title": "¿Que son las metodologías agiles?",
+    "description": "canal alura latam",
+    "src": "https://i.ytimg.com/vi/6N3OkLCfK-0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDHL_X4Hc7j2GSNcclFDT33KV5USQ",
+    "videoUrl": "https://www.youtube.com/embed/6N3OkLCfK-0",
+    "categoria": "Innovación y Gestión",
+    "id": 1720286618395
+  },
+  {
+    "title": "¿Cuando usar let,var y Const?",
+    "description": "canal alura latam",
+    "src": "https://i.ytimg.com/vi/PztCEdIJITY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDJWqQzWreQLTp7q4esMjlV1roLTA",
+    "videoUrl": "https://www.youtube.com/embed/PztCEdIJITY",
+    "categoria": "Front End",
+    "id": 1720288479083
+  }
+]

@@ -1,0 +1,184 @@
+/* style-global.css */
+
+@media screen and (min-width: 1024px) {
+  .spanCategorias {
+    width: 155px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    padding: 5px 95px;
+    margin-left: 65px;
+    position: relative; 
+    top: 35px;
+  }
+
+  .spanCategorias.blue {
+    background-color: #6BD1FF; /* Azul para Front End */
+  }
+
+
+  .cajaDeVideos.front-end {
+    box-shadow: 0 0 30px rgba(4, 234, 255, 0.514); /* Sombra azul */
+  }
+
+  .cajaDeVideos.back-end {
+    box-shadow: 0 0 30px rgba(75, 233, 81, 0.514); /* Sombra verde */
+  }
+
+  .cajaDeVideos.innovacion {
+    box-shadow: 0 0 30px rgba(218, 178, 61, 0.514); /* Sombra amarilla */
+  }
+
+  .spanCategorias.green {
+    background-color: #4CAF50; /* Verde para Back End */
+  }
+
+  .spanCategorias.yellow {
+    background-color: #FFC107; /* Amarillo para Innovación y Gestión */
+  }
+
+  .nombreCategoria {
+    color: rgb(250, 233, 233);
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center; /* Asegura que el texto dentro del h1 esté alineado a la izquierda */
+  }
+
+  .contener-principal-categorias {
+    background-color: #262626;
+  }
+
+  .contenedor-principal {
+    padding-top: 30px;
+    padding-bottom: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cajaDeVideos {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    align-items: center;
+  }
+
+  .imagenVideo {
+    width: 429.19px;
+    height: 260.85px;
+    top: 3px;
+  }
+
+  .container-buttons {
+    display: flex;
+    width: 100%;
+  }
+
+  .button {
+    height: 50px;
+    width: 214px;
+    flex: 1;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    transition: background-color 0.3s ease;
+  }
+
+  .borrar {
+    background-color: black;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .borrar:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .editar {
+    background-color: black;
+    color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .editar:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .edit-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+
+  .edit-form h2 {
+    margin-top: 0;
+  }
+
+  .edit-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .edit-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .edit-form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .video-container {
+    width: 429.19px; /* Ancho igual al de la imagen */
+    height: 260.85px; /* Alto igual al de la imagen */
+    position: relative;
+    margin-top: 10px; /* Ajuste de margen para separar del video anterior */
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .close-video {
+    position: absolute;
+    top: 10px; /* Ajusta la posición verticalmente */
+    right: 10px; /* Ajusta la posición horizontalmente */
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 100;
+  }
+
+  .close-video:hover {
+    background-color: white;
+    color: black;
+  }
+}
