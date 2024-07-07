@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './assets/Header';
-import Home from './assets/Home';
+import Start from './assets/Start';
+import Categorias from './assets/Categorias';
 import Footer from './assets/Footer';
 import NuevoVideo from './assets/NuevoVideo';
 
-const backendUrl = 'https://aluraflix-git-main-marlon-prs-projects.vercel.app';
+function Home({ videos, handleEdit, handleDelete }) {
+  const frontendVideos = videos.filter(video => video.categoria.toLowerCase() === 'frontend');
+  const backendVideos = videos.filter(video => video.categoria.toLowerCase() === 'backend');
+  const innovacionVideos = videos.filter(video => video.categoria.toLowerCase() === 'innovacion');
+
+  return (
+    <>
+      <Start />
+      <Categorias title="FRONT END" colorClass="blue" videos={frontendVideos} handleEdit={handleEdit} handleDelete={handleDelete} />
+      <Categorias title="BACK END" colorClass="green" videos={backendVideos} handleEdit={handleEdit} handleDelete={handleDelete} />
+      <Categorias title="INNOVACIÓN Y GESTIÓN" colorClass="yellow" videos={innovacionVideos} handleEdit={handleEdit} handleDelete={handleDelete} />
+    </>
+  );
+}
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -15,14 +29,14 @@ function App() {
   }, []);
 
   const fetchVideos = () => {
-    fetch(`${backendUrl}/api/videos`)
+    fetch(`${process.env.PORT}/api/videos`)
       .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
   };
 
   const handleSaveVideo = (nuevoVideo) => {
-    fetch(`${backendUrl}/api/videos`, {
+    fetch(`${process.env.PORT}/api/videos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,7 +49,7 @@ function App() {
   };
 
   const handleDeleteVideo = (id) => {
-    fetch(`${backendUrl}/api/videos/${id}`, {
+    fetch(`${process.env.PORT}/api/videos/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -51,7 +65,7 @@ function App() {
   };
 
   const handleEditVideo = (editedVideo) => {
-    fetch(`${backendUrl}/api/videos/${editedVideo.id}`, {
+    fetch(`${process.env.PORT}/api/videos/${editedVideo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
