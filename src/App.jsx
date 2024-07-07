@@ -30,7 +30,12 @@ function App() {
 
   const fetchVideos = () => {
     fetch('https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
   };
@@ -43,7 +48,12 @@ function App() {
       },
       body: JSON.stringify(nuevoVideo)
     })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => setVideos([...videos, data]))
       .catch(error => console.error('Error adding video:', error));
   };
@@ -72,7 +82,12 @@ function App() {
       },
       body: JSON.stringify(editedVideo)
     })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
         setVideos(prevVideos => prevVideos.map(video => (video.id === data.id ? data : video)));
       })
