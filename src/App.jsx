@@ -29,14 +29,14 @@ function App() {
   }, []);
 
   const fetchVideos = () => {
-    fetch('http://localhost:5000/api/videos')
+    fetch('https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos')
       .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
   };
 
   const handleSaveVideo = (nuevoVideo) => {
-    fetch('http://localhost:5000/api/videos', {
+    fetch('https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ function App() {
   };
 
   const handleDeleteVideo = (id) => {
-    fetch(`http://localhost:5000/api/videos/${id}`, {
+    fetch(`https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ function App() {
   };
 
   const handleEditVideo = (editedVideo) => {
-    fetch(`http://localhost:5000/api/videos/${editedVideo.id}`, {
+    fetch(`https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos/${editedVideo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -91,4 +91,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
