@@ -1,64 +1,80 @@
-import express from 'express';
-import fs from 'fs/promises';
-import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './assets/Header';
+import Home from './assets/Home';
+import Footer from './assets/Footer';
+import NuevoVideo from './assets/NuevoVideo';
 
-const app = express();
-const port = process.env.PORT || 5000;
+const backendUrl = 'https://aluraflix-git-main-marlon-prs-projects.vercel.app';
 
-app.use(express.json());
-app.use(cors());
+function App() {
+  const [videos, setVideos] = useState([]);
 
-let videos;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const dataFilePath = path.join(__dirname, '..', 'data.json');
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
-// Carga el archivo JSON utilizando fs/promises
-fs.readFile(dataFilePath, 'utf8')
-  .then(data => {
-    videos = JSON.parse(data);
+  const fetchVideos = () => {
+    fetch(`${backendUrl}/api/videos`)
+      .then(response => response.json())
+      .then(data => setVideos(data))
+      .catch(error => console.error('Error fetching videos:', error));
+  };
 
-    // Ruta para obtener todos los videos
-    app.get('/api/videos', (req, res) => {
-      res.json(videos);
-    });
+  const handleSaveVideo = (nuevoVideo) => {
+    fetch(`${backendUrl}/api/videos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(nuevoVideo)
+    })
+      .then(response => response.json())
+      .then(data => setVideos([...videos, data]))
+      .catch(error => console.error('Error adding video:', error));
+  };
 
-    // Ruta para agregar un nuevo video
-    app.post('/api/videos', (req, res) => {
-      const newVideo = { ...req.body, id: Date.now() };
-      videos.push(newVideo);
-      fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
-        .then(() => res.json(newVideo))
-        .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
-    });
+  const handleDeleteVideo = (id) => {
+    fetch(`${backendUrl}/api/videos/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        setVideos(videos.filter(video => video.id !== id));
+      })
+      .catch(error => console.error('Error deleting video:', error));
+  };
 
-    // Ruta para eliminar un video
-    app.delete('/api/videos/:id', (req, res) => {
-      const videoId = parseInt(req.params.id, 10);
-      videos = videos.filter(video => video.id !== videoId);
-      fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
-        .then(() => res.status(204).end())
-        .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
-    });
+  const handleEditVideo = (editedVideo) => {
+    fetch(`${backendUrl}/api/videos/${editedVideo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(editedVideo)
+    })
+      .then(response => response.json())
+      .then(data => {
+        setVideos(prevVideos => prevVideos.map(video => (video.id === data.id ? data : video)));
+      })
+      .catch(error => console.error('Error updating video:', error));
+  };
 
-    // Ruta para actualizar un video
-    app.put('/api/videos/:id', (req, res) => {
-      const videoId = parseInt(req.params.id, 10);
-      const updatedVideo = { ...req.body, id: videoId };
-      videos = videos.map(video => video.id === videoId ? updatedVideo : video);
-      fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
-        .then(() => res.json(updatedVideo))
-        .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
-    });
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home videos={videos} handleEdit={handleEditVideo} handleDelete={handleDeleteVideo} />} />
+        <Route path="/nuevo-video" element={<NuevoVideo onSave={handleSaveVideo} />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
+}
 
-    // Inicia el servidor
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  })
-  .catch(err => {
-    console.error('Error al leer el archivo data.json:', err);
-    process.exit(1);
-  });
+export default App;
