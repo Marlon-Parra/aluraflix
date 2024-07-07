@@ -1,25 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './assets/Header';
-import Start from './assets/Start';
-import Categorias from './assets/Categorias';
+import Home from './assets/Home';
 import Footer from './assets/Footer';
 import NuevoVideo from './assets/NuevoVideo';
 
-function Home({ videos, handleEdit, handleDelete }) {
-  const frontendVideos = videos.filter(video => video.categoria.toLowerCase() === 'frontend');
-  const backendVideos = videos.filter(video => video.categoria.toLowerCase() === 'backend');
-  const innovacionVideos = videos.filter(video => video.categoria.toLowerCase() === 'innovacion');
-
-  return (
-    <>
-      <Start />
-      <Categorias title="FRONT END" colorClass="blue" videos={frontendVideos} handleEdit={handleEdit} handleDelete={handleDelete} />
-      <Categorias title="BACK END" colorClass="green" videos={backendVideos} handleEdit={handleEdit} handleDelete={handleDelete} />
-      <Categorias title="INNOVACIÓN Y GESTIÓN" colorClass="yellow" videos={innovacionVideos} handleEdit={handleEdit} handleDelete={handleDelete} />
-    </>
-  );
-}
+const backendUrl = 'https://aluraflix-git-main-marlon-prs-projects.vercel.app';
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -29,37 +15,27 @@ function App() {
   }, []);
 
   const fetchVideos = () => {
-    fetch('https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+    fetch(`${backendUrl}/api/videos`)
+      .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
   };
 
   const handleSaveVideo = (nuevoVideo) => {
-    fetch('https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos', {
+    fetch(`${backendUrl}/api/videos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(nuevoVideo)
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => setVideos([...videos, data]))
       .catch(error => console.error('Error adding video:', error));
   };
 
   const handleDeleteVideo = (id) => {
-    fetch(`https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos/${id}`, {
+    fetch(`${backendUrl}/api/videos/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -75,19 +51,14 @@ function App() {
   };
 
   const handleEditVideo = (editedVideo) => {
-    fetch(`https://aluraflix-git-main-marlon-prs-projects.vercel.app/api/videos/${editedVideo.id}`, {
+    fetch(`${backendUrl}/api/videos/${editedVideo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(editedVideo)
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         setVideos(prevVideos => prevVideos.map(video => (video.id === data.id ? data : video)));
       })
