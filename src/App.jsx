@@ -23,20 +23,21 @@ function Home({ videos, handleEdit, handleDelete }) {
 
 function App() {
   const [videos, setVideos] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/videos';
 
   useEffect(() => {
     fetchVideos();
   }, []);
 
   const fetchVideos = () => {
-    fetch(`${process.env.PORT}/api/videos`)
+    fetch(API_URL)
       .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
   };
 
   const handleSaveVideo = (nuevoVideo) => {
-    fetch(`${process.env.PORT}/api/videos`, {
+    fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +50,7 @@ function App() {
   };
 
   const handleDeleteVideo = (id) => {
-    fetch(`${process.env.PORT}/api/videos/${id}`, {
+    fetch(`${API_URL}/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -65,7 +66,7 @@ function App() {
   };
 
   const handleEditVideo = (editedVideo) => {
-    fetch(`${process.env.PORT}/api/videos/${editedVideo.id}`, {
+    fetch(`${API_URL}/${editedVideo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
