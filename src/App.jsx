@@ -7,9 +7,9 @@ import Footer from './assets/Footer';
 import NuevoVideo from './assets/NuevoVideo';
 
 function Home({ videos, handleEdit, handleDelete }) {
-  const frontendVideos = videos.filter(video => video.categoria.toLowerCase() === 'frontend' || video.categoria === 'Front End');
-  const backendVideos = videos.filter(video => video.categoria.toLowerCase() === 'backend' || video.categoria === 'Back End');
-  const innovacionVideos = videos.filter(video => video.categoria.toLowerCase() === 'innovacion' || video.categoria === 'Innovación y Gestión');
+  const frontendVideos = videos.filter(video => video.categoria.toLowerCase() === 'frontend');
+  const backendVideos = videos.filter(video => video.categoria.toLowerCase() === 'backend');
+  const innovacionVideos = videos.filter(video => video.categoria.toLowerCase() === 'innovacion');
 
   return (
     <>
@@ -25,14 +25,18 @@ function App() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/videos')
+    fetchVideos();
+  }, []);
+
+  const fetchVideos = () => {
+    fetch('/api/videos') // Cambiado a la ruta relativa para producción
       .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
-  }, []);
+  };
 
   const handleSaveVideo = (nuevoVideo) => {
-    fetch('http://localhost:5000/api/videos', {
+    fetch('/api/videos', { // Cambiado a la ruta relativa para producción
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +49,7 @@ function App() {
   };
 
   const handleDeleteVideo = (id) => {
-    fetch(`http://localhost:5000/api/videos/${id}`, {
+    fetch(`/api/videos/${id}`, { // Cambiado a la ruta relativa para producción
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -61,7 +65,7 @@ function App() {
   };
 
   const handleEditVideo = (editedVideo) => {
-    fetch(`http://localhost:5000/api/videos/${editedVideo.id}`, {
+    fetch(`/api/videos/${editedVideo.id}`, { // Cambiado a la ruta relativa para producción
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -70,9 +74,7 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-        setVideos(prevVideos => {
-          return prevVideos.map(video => (video.id === data.id ? data : video));
-        });
+        setVideos(prevVideos => prevVideos.map(video => (video.id === data.id ? data : video)));
       })
       .catch(error => console.error('Error updating video:', error));
   };

@@ -7,9 +7,16 @@ const NuevoVideoForm = ({ onVideoAdded }) => {
   const [src, setSrc] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Validar campos del formulario
+    if (!title || !description || !src || !videoUrl || !categoria) {
+      setError('Por favor, completa todos los campos antes de enviar.');
+      return;
+    }
 
     const embedUrl = convertToEmbedUrl(videoUrl);
 
@@ -44,6 +51,7 @@ const NuevoVideoForm = ({ onVideoAdded }) => {
     setSrc('');
     setVideoUrl('');
     setCategoria('');
+    setError('');
   };
 
   const convertToEmbedUrl = (url) => {
@@ -68,6 +76,7 @@ const NuevoVideoForm = ({ onVideoAdded }) => {
   return (
     <form onSubmit={handleSubmit} className="nuevo-video-form">
       <h2>Agregar Nuevo Video</h2>
+      {error && <p className="error">{error}</p>}
       <label>
         Título:
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -75,10 +84,10 @@ const NuevoVideoForm = ({ onVideoAdded }) => {
       <label>
         Categoría:
         <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-          <option value="">Selecciona una categoría</option>
-          <option value="Front End">Front End</option>
-          <option value="Back End">Back End</option>
-          <option value="Innovación y Gestión">Innovación y Gestión</option>
+          <option value="" disabled>Selecciona una categoría</option>
+          <option value="frontend">Front End</option>
+          <option value="backend">Back End</option>
+          <option value="innovacion">Innovación y Gestión</option>
         </select>
       </label>
       <label>

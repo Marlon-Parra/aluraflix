@@ -1,17 +1,22 @@
 import express from 'express';
 import fs from 'fs/promises';
-import cors from 'cors'; // Importa cors
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors()); // Usa el middleware cors
+app.use(cors());
 
 let videos;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const dataFilePath = path.join(__dirname, '..', 'data.json');
 
 // Carga el archivo JSON utilizando fs/promises
-fs.readFile('./dbs.json', 'utf8')
+fs.readFile(dataFilePath, 'utf8')
   .then(data => {
     videos = JSON.parse(data);
 
@@ -24,7 +29,7 @@ fs.readFile('./dbs.json', 'utf8')
     app.post('/api/videos', (req, res) => {
       const newVideo = { ...req.body, id: Date.now() };
       videos.push(newVideo);
-      fs.writeFile('./dbs.json', JSON.stringify(videos, null, 2))
+      fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
         .then(() => res.json(newVideo))
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
     });
@@ -33,7 +38,7 @@ fs.readFile('./dbs.json', 'utf8')
     app.delete('/api/videos/:id', (req, res) => {
       const videoId = parseInt(req.params.id, 10);
       videos = videos.filter(video => video.id !== videoId);
-      fs.writeFile('./dbs.json', JSON.stringify(videos, null, 2))
+      fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
         .then(() => res.status(204).end())
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
     });
@@ -43,7 +48,7 @@ fs.readFile('./dbs.json', 'utf8')
       const videoId = parseInt(req.params.id, 10);
       const updatedVideo = { ...req.body, id: videoId };
       videos = videos.map(video => video.id === videoId ? updatedVideo : video);
-      fs.writeFile('./dbs.json', JSON.stringify(videos, null, 2))
+      fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
         .then(() => res.json(updatedVideo))
         .catch(err => res.status(500).json({ error: 'Error al escribir en el archivo' }));
     });
@@ -54,6 +59,6 @@ fs.readFile('./dbs.json', 'utf8')
     });
   })
   .catch(err => {
-    console.error('Error al leer el archivo dbs.json:', err);
+    console.error('Error al leer el archivo data.json:', err);
     process.exit(1);
   });
