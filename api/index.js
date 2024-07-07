@@ -28,6 +28,10 @@ fs.readFile(dataFilePath, 'utf8')
     // Ruta para agregar un nuevo video
     app.post('/api/videos', (req, res) => {
       const newVideo = { ...req.body, id: Date.now() };
+      // Validación básica de datos
+      if (!newVideo.title || !newVideo.videoUrl || !newVideo.categoria) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+      }
       videos.push(newVideo);
       fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
         .then(() => res.json(newVideo))
@@ -47,6 +51,10 @@ fs.readFile(dataFilePath, 'utf8')
     app.put('/api/videos/:id', (req, res) => {
       const videoId = parseInt(req.params.id, 10);
       const updatedVideo = { ...req.body, id: videoId };
+      // Validación básica de datos
+      if (!updatedVideo.title || !updatedVideo.videoUrl || !updatedVideo.categoria) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+      }
       videos = videos.map(video => video.id === videoId ? updatedVideo : video);
       fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2))
         .then(() => res.json(updatedVideo))
