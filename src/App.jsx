@@ -29,14 +29,14 @@ function App() {
   }, []);
 
   const fetchVideos = () => {
-    fetch('/api/videos') // Cambiado a la ruta relativa para producción
+    fetch('http://localhost:5000/api/videos')
       .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
   };
 
   const handleSaveVideo = (nuevoVideo) => {
-    fetch('/api/videos', { // Cambiado a la ruta relativa para producción
+    fetch('http://localhost:5000/api/videos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ function App() {
   };
 
   const handleDeleteVideo = (id) => {
-    fetch(`/api/videos/${id}`, { // Cambiado a la ruta relativa para producción
+    fetch(`http://localhost:5000/api/videos/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ function App() {
   };
 
   const handleEditVideo = (editedVideo) => {
-    fetch(`/api/videos/${editedVideo.id}`, { // Cambiado a la ruta relativa para producción
+    fetch(`http://localhost:5000/api/videos/${editedVideo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -91,4 +91,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
