@@ -48,7 +48,7 @@
     }
     
     .agregar {
-      background-color: #00bfff;
+      background: linear-gradient(to right, #999999, #043c61);
       border: none;
       padding: 10px 20px;
       border-radius: 4px;
@@ -58,7 +58,7 @@
     }
   
     .limpiar{
-      background-color: #00bfff;
+      background: linear-gradient(to right, #999999, #043c61);
       border: none;
       padding: 10px 20px;
       border-radius: 4px;
