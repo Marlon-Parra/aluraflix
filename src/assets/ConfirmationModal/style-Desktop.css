@@ -10,10 +10,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
   }
   
   .modal {
-    background-color: #2560ce;
+    background-color:#171c27; 
+      border: 2px solid #add8e6; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -38,13 +40,15 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 18px;
-    background-color: #1827af; /* Fondo azul oscuro */
+    background: linear-gradient(to right, #062b77, #000000); 
     color: #ffffff; /* Texto blanco */
     border: none;
+    transition: background 0.3s ease; 
+  
   }
   
   .modal-buttons button:hover {
-    background-color: #000000; /* Fondo negro al pasar el mouse */
-  }
-  
+    background: linear-gradient(to right, #000000, #083a9e);
+    color: white;
+}
 }

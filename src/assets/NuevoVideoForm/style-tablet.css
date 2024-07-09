@@ -53,26 +53,26 @@
     }
     
     .agregar {
-      background-color: #00bfff;
+      background: linear-gradient(to right, #999999, #043c61);
       border: none;
       padding: 20px 30px;
-      border-radius: 4px;
+      border-radius: 15px;
       cursor: pointer;
-      color: #000;
+      color: #ffffff;
       transition: background-color 0.3s;
       font-size: 20px;
     }
   
     .limpiar{
-      background-color: #00bfff;
+      background: linear-gradient(to right, #999999, #043c61);
       border: none;
       padding: 20px 30px;
-      border-radius: 4px;
+      border-radius: 15px;
       cursor: pointer;
-      color: #000;
+      color: #ffffff;
       transition: background-color 0.3s;
       position: relative;
-      left: 50%;
+      left: 43%;
       font-size: 20px;
     }
   

@@ -4,7 +4,7 @@
     background-color: #1e1e1e;
     border: 2px solid #00bfff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 40px;
     color: #fff;
     width: 50%;
     margin: 0 auto;
@@ -43,40 +43,31 @@
   }
   
   .agregar {
-    background-color: #00bfff;
+    background: linear-gradient(to right, #999999, #043c61);
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    color: #000;
+    color: #ffffff;
     transition: background-color 0.3s;
   }
 
   .limpiar{
-    background-color: #00bfff;
+    background: linear-gradient(to right, #999999, #043c61);
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    color: #000;
+    color: #ffffff;
     transition: background-color 0.3s;
     position: relative;
     left: 73%;
   }
 
-  
-  .nuevo-video-form button:hover {
-    background-color: #00a1d1;
+ .limpiar:hover, .agregar:hover{
+  background: linear-gradient(to right, #043c61, #999999);
   }
-  
-  .nuevo-video-form button.cancel {
-    background-color: #555;
-    color: #fff;
-  }
-  
-  .nuevo-video-form button.cancel:hover {
-    background-color: #333;
-  }
+ 
   
   .error-message {
     color: #ff6347;

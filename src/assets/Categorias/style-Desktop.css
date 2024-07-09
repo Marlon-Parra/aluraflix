@@ -17,16 +17,16 @@
   }
 
 
-  .cajaDeVideos.front-end {
-    box-shadow: 0 0 30px rgba(4, 234, 255, 0.514); /* Sombra azul */
+  .cajaDeVideos.frontend {
+    box-shadow: 0 0 10px rgba(4, 234, 255, 0.514); /* Sombra azul */
   }
 
-  .cajaDeVideos.back-end {
-    box-shadow: 0 0 30px rgba(75, 233, 81, 0.514); /* Sombra verde */
+  .cajaDeVideos.backend {
+    box-shadow: 0 0 10px rgba(75, 233, 81, 0.514); /* Sombra verde */
   }
 
   .cajaDeVideos.innovacion {
-    box-shadow: 0 0 30px rgba(218, 178, 61, 0.514); /* Sombra amarilla */
+    box-shadow: 0 0 10px rgba(218, 178, 61, 0.514); /* Sombra amarilla */
   }
 
   .spanCategorias.green {

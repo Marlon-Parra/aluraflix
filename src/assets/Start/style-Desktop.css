@@ -42,7 +42,7 @@
     .parrafo {
         text-align: justify; /* Justifica el texto dentro del párrafo */
         margin: 10px 0;
-        max-width: 530px;
+        max-width: 500px;
     }
     
     
@@ -53,7 +53,7 @@
         display: flex;
         height: 280px;
         max-width: 450px; /* Limita el ancho máximo del contenedor */
-        margin-left: 770px;
+        margin-left: auto;
        position: relative;
        bottom: 220px;
     }
