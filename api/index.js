@@ -49,11 +49,14 @@ app.post('/api/videos', async (req, res) => {
 // Ruta para eliminar un video
 app.delete('/api/videos/:id', async (req, res) => {
   const videoId = parseInt(req.params.id, 10);
+  console.log(`Deleting video with id: ${videoId}`);
   videos = videos.filter(video => video.id !== videoId);
+  console.log('Updated videos list:', videos);
   try {
     await fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2));
     res.status(204).end();
   } catch (err) {
+    console.error('Error al escribir en el archivo:', err);
     res.status(500).json({ error: 'Error al escribir en el archivo' });
   }
 });
