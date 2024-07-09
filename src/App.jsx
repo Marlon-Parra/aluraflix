@@ -45,11 +45,12 @@ function App() {
       body: JSON.stringify(nuevoVideo)
     })
       .then(response => response.json())
-      .then(data => setVideos([...videos, data]))
+      .then(data => setVideos(prevVideos => [...prevVideos, data]))
       .catch(error => console.error('Error adding video:', error));
   };
 
   const handleDeleteVideo = (id) => {
+    console.log(`Deleting video with id: ${id}`);
     fetch(`${API_URL}/${id}`, {
       method: 'DELETE',
       headers: {
@@ -61,10 +62,11 @@ function App() {
           throw new Error('Network response was not ok');
         }
         setVideos(videos.filter(video => video.id !== id));
+        console.log('Updated videos list in state:', videos.filter(video => video.id !== id));
       })
       .catch(error => console.error('Error deleting video:', error));
   };
-
+  
   const handleEditVideo = (editedVideo) => {
     fetch(`${API_URL}/${editedVideo.id}`, {
       method: 'PUT',
@@ -79,6 +81,7 @@ function App() {
       })
       .catch(error => console.error('Error updating video:', error));
   };
+  
 
   return (
     <Router>
