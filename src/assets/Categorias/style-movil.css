@@ -55,7 +55,7 @@
     
     .imagenVideo {
       width: 100%; /* Ocupa el ancho completo del contenedor */
-      height: auto; /* Altura automática según la proporción */
+      height: 190px; /* Altura automática según la proporción */
       border-radius: 10px; /* Bordes redondeados */
     }
     
@@ -171,7 +171,7 @@
     .video-container {
       width: 100%; /* Ocupa el ancho completo del contenedor */
       max-width: 600px; /* Ancho máximo del video */
-      height: 200px; 
+      height: 190px; 
       position: relative;
     }
     
