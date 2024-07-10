@@ -155,7 +155,6 @@
     width: 429.19px; /* Ancho igual al de la imagen */
     height: 260.85px; /* Alto igual al de la imagen */
     position: relative;
-    margin-top: 10px; /* Ajuste de margen para separar del video anterior */
   }
 
   .video-container iframe {
