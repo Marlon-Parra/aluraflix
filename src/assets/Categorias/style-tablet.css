@@ -140,6 +140,7 @@
   .video-container {
       width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
       height: 210px; 
+      position: relativa;
   }
 
   .video-container iframe {
