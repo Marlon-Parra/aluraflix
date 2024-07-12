@@ -14,28 +14,26 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dataFilePath = path.join(__dirname, '..', 'data.json');
 
-let videos = [];
-
-// Carga el archivo JSON utilizando fs/promises
+// Función para cargar videos desde el archivo JSON
 const loadVideos = async () => {
   try {
     const data = await fs.readFile(dataFilePath, 'utf8');
-    videos = JSON.parse(data);
+    return JSON.parse(data);
   } catch (err) {
     console.error('Error al leer el archivo data.json:', err);
-    process.exit(1);
+    return [];
   }
 };
 
-loadVideos();
-
 // Ruta para obtener todos los videos
-app.get('/api/videos', (req, res) => {
+app.get('/api/videos', async (req, res) => {
+  const videos = await loadVideos();
   res.json(videos);
 });
 
 // Ruta para agregar un nuevo video
 app.post('/api/videos', async (req, res) => {
+  const videos = await loadVideos();
   const newVideo = { ...req.body, id: Date.now() };
   videos.push(newVideo);
   try {
@@ -48,12 +46,13 @@ app.post('/api/videos', async (req, res) => {
 
 // Ruta para eliminar un video
 app.delete('/api/videos/:id', async (req, res) => {
+  const videos = await loadVideos();
   const videoId = parseInt(req.params.id, 10);
   console.log(`Deleting video with id: ${videoId}`);
-  videos = videos.filter(video => video.id !== videoId);
-  console.log('Updated videos list:', videos);
+  const updatedVideos = videos.filter(video => video.id !== videoId);
+  console.log('Updated videos list:', updatedVideos);
   try {
-    await fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2));
+    await fs.writeFile(dataFilePath, JSON.stringify(updatedVideos, null, 2));
     res.status(204).end();
   } catch (err) {
     console.error('Error al escribir en el archivo:', err);
@@ -63,11 +62,12 @@ app.delete('/api/videos/:id', async (req, res) => {
 
 // Ruta para actualizar un video
 app.put('/api/videos/:id', async (req, res) => {
+  const videos = await loadVideos();
   const videoId = parseInt(req.params.id, 10);
   const updatedVideo = { ...req.body, id: videoId };
-  videos = videos.map(video => video.id === videoId ? updatedVideo : video);
+  const updatedVideos = videos.map(video => video.id === videoId ? updatedVideo : video);
   try {
-    await fs.writeFile(dataFilePath, JSON.stringify(videos, null, 2));
+    await fs.writeFile(dataFilePath, JSON.stringify(updatedVideos, null, 2));
     res.json(updatedVideo);
   } catch (err) {
     res.status(500).json({ error: 'Error al escribir en el archivo' });
