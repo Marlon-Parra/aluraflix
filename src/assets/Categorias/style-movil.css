@@ -1,0 +1,201 @@
+@media (max-width: 767px) {
+  
+  .spanCategorias{
+    height: auto;
+    border-radius: 15px;
+    padding: 5px 20px;
+    position: relative; 
+     top: 35px;
+     margin: 0 auto 30px auto;
+  }
+
+  
+.spanCategorias.blue {
+  width: fit-content;
+  background-color: #6BD1FF; /* Azul para Front End */
+}
+
+.spanCategorias.green {
+  width: fit-content;
+  background-color: #4CAF50; /* Verde para Back End */
+}
+
+.spanCategorias.yellow {
+  width: max-content;
+  background-color: #FFC107; /* Amarillo para Innovación y Gestión */
+}
+  
+  .nombreCategoria{
+    color: rgb(250, 233, 233);
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .contener-principal-categorias {
+  background-color: #262626;
+  width: 100%;
+  }
+  
+  .contenedor-principal {
+    padding-top: 30px;
+    padding-bottom: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Centra los elementos horizontalmente */
+  }
+  
+  .cajaDeVideos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 329.19px; /* Ajusta el ancho máximo del contenedor */
+    margin-bottom: 20px; /* Espacio entre cada caja */
+  }
+  
+  .imagenVideo {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    height: 190px; /* Altura automática según la proporción */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  .container-buttons {
+    display: flex;
+    width: 100%;
+    
+    }
+    
+    .button {
+    height: 50px;
+    flex: 1;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    transition: background-color 0.3s ease;
+    }
+    
+    .borrar {
+    background-color: black;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    }
+    
+    .borrar:hover {
+    background-color: white;
+    color: black;
+    }
+    
+    .editar {
+    background-color: black;
+    color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    }
+    
+    .editar:hover {
+    background-color: white;
+    color: black;
+    }
+    
+    .edit-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    }
+    
+    .edit-form h2 {
+    margin-top: 0;
+    }
+    
+    .edit-form label {
+    display: block;
+    margin-bottom: 10px;
+    }
+    
+    .edit-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    }.edit-form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    }
+    
+  
+  .edit-form h2 {
+    margin-top: 0;
+  }
+  
+  .edit-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .edit-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .edit-form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .video-container {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    max-width: 600px; /* Ancho máximo del video */
+    height: 190px; 
+    position: relative;
+  }
+  
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .close-video {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 100;
+  }
+  
+  .close-video:hover {
+    background-color: white;
+    color: black;
+  }
+}

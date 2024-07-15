@@ -1,0 +1,93 @@
+@media (max-width: 767px) {
+
+    .nuevo-video-form {
+      background-color: #1e1e1e;
+      border: 2px solid #00bfff;
+      border-radius: 8px;
+      padding: 20px;
+      color: #fff;
+      width: 50%;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+
+    .nuevo-video-form h2{
+        font-size: 20px;
+    }
+
+  .nuevo-video-form select{
+      background-color: #2e2e2e;
+      border: 1px solid #00bfff;
+      color: #fff;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+  }
+  
+    .nuevo-video-form input, 
+    .nuevo-video-form textarea{
+      background-color: #2e2e2e;
+      border: 1px solid #00bfff;
+      color: #fff;
+      width: 97%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    
+    .nuevo-video-form input::placeholder, 
+    .nuevo-video-form textarea::placeholder {
+      color: #888;
+    }
+    
+    .nuevo-video-form .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .agregar {
+      background: linear-gradient(to right, #999999, #043c61);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+  
+    .limpiar{
+      background: linear-gradient(to right, #999999, #043c61);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #fff;
+      transition: background-color 0.3s;
+      position: relative;
+      left: 18%;
+    }
+  
+    
+    .nuevo-video-form button:hover {
+      background-color: #00a1d1;
+    }
+    
+    .nuevo-video-form button.cancel {
+      background-color: #555;
+      color: #fff;
+    }
+    
+    .nuevo-video-form button.cancel:hover {
+      background-color: #333;
+    }
+    
+    .error-message {
+      color: #ff6347;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+    
+  }
+  
